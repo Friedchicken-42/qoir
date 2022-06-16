@@ -360,10 +360,8 @@ fn main() {
     }
 
     match read("a.qoi") {
-        Ok((header, data)) => {
+        Ok((_header, data)) => {
             let mut v: Vec<u8> = Vec::new();
-            write_32(&mut v, header.width);
-            write_32(&mut v, header.height);
             v.extend(data);
 
             match std::fs::write("b.raw", v) {
